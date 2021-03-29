@@ -2,6 +2,8 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.domain.model
 
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.
+ *
+ * Model class for the products that are listed in the first screen of the application.
  */
 data class Product(
         val brand: String,
