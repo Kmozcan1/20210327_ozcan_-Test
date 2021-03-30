@@ -45,22 +45,32 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver())
     }
 
-    // Returns ViewState Observer object
+    // Observes the ViewState LiveData
     private fun viewStateObserver() = Observer<ProductListViewState> { viewState ->
         when (viewState.state) {
             ERROR -> makeToast(viewState.errorMessage)
-            INITIAL -> if (getIsConnectedToInternet()) {
-                viewModel.getProducts()
+            INITIAL -> {
+                // This is always false during the application launch, because the internet
+                // because the fragment gets created before the connection status can update
+                // But this if condition still is useful when the fragment is navigated to
+                // from another
+                if (getIsConnectedToInternet()) {
+                    viewModel.getProducts()
+                }
             }
-            LOADING -> {/*loading stuff*/}
+            LOADING -> {
+                // Show progress bar while waiting for api response
+                binding.productListProgressBar.visibility = View.VISIBLE
+            }
             LIST_RESULT -> {
-                with(binding.productListRecyclerView) {
-                    viewState.productList?.let { productListResult ->
-                        if(productListResult.isEmpty()) {
-                            //handle empty result
-                        } else {
-                            productListAdapter.addProductList(productListResult)
-                        }
+                binding.productListProgressBar.visibility = View.GONE
+                viewState.productList?.let { productListResult ->
+                    if(productListResult.isEmpty()) {
+                        // list doesn't return empty with the current api call,
+                        // can be useful is actual search is implemented
+                    } else {
+                        // add the list to the RecyclerView
+                        productListAdapter.addProductList(productListResult)
                     }
                 }
             }
@@ -68,13 +78,17 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     override fun onInternetDisconnected() {
-        binding.connectionTest.visibility = View.VISIBLE
+        binding.productListProgressBar.visibility = View.GONE
+        // Show empty warning only if the list hasn't been loaded yet
+        if (productListAdapter.productList.isEmpty()) {
+            binding.connectivityWarningTextView.visibility = View.VISIBLE
+        }
         super.onInternetDisconnected()
     }
 
     override fun onInternetConnected() {
         if (previouslyDisconnected) {
-            binding.connectionTest.visibility = View.GONE
+            binding.connectivityWarningTextView.visibility = View.GONE
         }
         if (previouslyDisconnected && productListAdapter.productList.isEmpty()) {
             viewModel.getProducts()

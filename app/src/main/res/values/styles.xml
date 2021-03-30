@@ -15,4 +15,14 @@
     <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!--ProgressBar style-->
+    <style name="CircularProgressStyle" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CircularProgressIndicator</item>
+        <item name="trackThickness">20dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.CircularProgressIndicator" parent="">
+        <item name="colorPrimary">@color/black</item>
+    </style>
 </resources>
