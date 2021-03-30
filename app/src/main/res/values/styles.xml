@@ -11,4 +11,8 @@
         <item name="colorOnPrimary">@color/black</item>
     </style>
 
+    <!--TextView style-->
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

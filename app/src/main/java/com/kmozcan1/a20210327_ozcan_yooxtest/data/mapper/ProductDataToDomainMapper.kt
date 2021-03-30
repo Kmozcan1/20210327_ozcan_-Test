@@ -9,7 +9,7 @@ import javax.inject.Inject
  * Created by Kadir Mert Özcan on 29-Mar-21.
  * Maps the ProductApiModel data model into Product domain model.
  */
-class ProductDataToDomainMapper @Inject constructor(): Mapper<ProductApiModel, Product> {
+class ProductDataToDomainMapper @Inject constructor() : Mapper<ProductApiModel, Product> {
     // Currently mapping everything, but in the future, all the attributes
     // from the API response might be added to the ProductApiModel, but not all might be
     // needed by the Product domain model

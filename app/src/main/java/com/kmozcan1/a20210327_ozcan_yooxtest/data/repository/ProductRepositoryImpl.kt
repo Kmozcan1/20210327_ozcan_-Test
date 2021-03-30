@@ -18,7 +18,7 @@ class ProductRepositoryImpl @Inject constructor(
 
     override fun getProductList(): Single<List<Product>> {
         return yamlApi.getProducts().map { response ->
-            productDataToDomainMapper.transform(inList = response)
+            productDataToDomainMapper.transform(inList = response.products)
         }
     }
 }

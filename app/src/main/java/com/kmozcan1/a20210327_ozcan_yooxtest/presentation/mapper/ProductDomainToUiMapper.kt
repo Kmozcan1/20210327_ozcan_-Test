@@ -3,6 +3,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.mapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.mapper.Mapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
+import javax.inject.Inject
 
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.
@@ -11,7 +12,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
  */
 // This is required because UI model needs to receive a different
 // price value based on a simple condition. And it doesn't require the code10 attribute.
-class ProductDomainToUiMapper : Mapper<Product, ProductUiModel> {
+class ProductDomainToUiMapper @Inject constructor() : Mapper<Product, ProductUiModel> {
     /** Maps [Product] object into [ProductUiModel] object*/
     override fun map(inModel: Product): ProductUiModel = inModel.run {
         ProductUiModel(brand = brand, category = category,

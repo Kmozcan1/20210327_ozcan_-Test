@@ -2,6 +2,8 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.application.di
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.BuildConfig
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,7 +52,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun providesConverterFactory(): Converter.Factory {
-        return MoshiConverterFactory.create()
+        val moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+        return MoshiConverterFactory.create(moshi)
     }
 
     @Provides

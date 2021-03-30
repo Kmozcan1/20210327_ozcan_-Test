@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,7 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration
  * Created by Kadir Mert Özcan on 27-Mar-21.
  */
 
-abstract class BaseFragment<DataBindingClass: ViewDataBinding, ViewModelClass: ViewModel>
+abstract class BaseFragment<DataBindingClass : ViewDataBinding, ViewModelClass : ViewModel>
     : Fragment() {
 
     private val mainActivity by lazy {
@@ -46,13 +45,15 @@ abstract class BaseFragment<DataBindingClass: ViewDataBinding, ViewModelClass: V
     lateinit var binding: DataBindingClass
         private set
 
+    lateinit var viewModel: ViewModelClass
+        private set
 
     // Layout res id for to inflate with data binding
     abstract val layoutId: Int
 
 
-    // ViewModel instance with the type parameter indicated by the child class
-    val viewModel: Class<ViewModelClass> by viewModels()
+    // Must be set for providing type safe view model
+    abstract val viewModelClass: Class<ViewModelClass>
 
     // Called just before onCreateView is finished
     abstract fun onViewBound()
@@ -61,12 +62,12 @@ abstract class BaseFragment<DataBindingClass: ViewDataBinding, ViewModelClass: V
     abstract fun observeLiveData()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Applies type safe data binding
         binding = DataBindingUtil.inflate(
-            inflater, layoutId, container, false) as DataBindingClass
+                inflater, layoutId, container, false) as DataBindingClass
 
         if (rootView == null) {
             rootView = binding.root
@@ -77,8 +78,9 @@ abstract class BaseFragment<DataBindingClass: ViewDataBinding, ViewModelClass: V
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(viewModelClass)
         if (!getIsConnectedToInternet()) {
             previouslyDisconnected = true
         }
@@ -86,6 +88,7 @@ abstract class BaseFragment<DataBindingClass: ViewDataBinding, ViewModelClass: V
         // LiveData is observed by child classes in this method
         observeLiveData()
     }
+
 
     internal fun setSupportActionBar(isVisible: Boolean, title: String? = null) {
         mainActivity.actionBar.run {

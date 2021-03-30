@@ -1,6 +1,7 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.data.api
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductApiModel
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.SearchResultResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -19,5 +20,5 @@ interface YamlApi  {
         "Accept: application/vnd.github.v3+json"
     )
     @GET("searchresult")
-    fun getProducts(): Single<List<ProductApiModel>>
+    fun getProducts(): Single<SearchResultResponse>
 }

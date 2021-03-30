@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.
@@ -26,12 +27,13 @@ fun RecyclerView.setRecyclerView(
 fun ImageView.setImageUrl(url: String?) {
     // Progress animation to show while the image is loading
     val circularProgressDrawable = CircularProgressDrawable(this.context)
-    circularProgressDrawable.strokeWidth = 5f
-    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.strokeWidth = 8f
+    circularProgressDrawable.centerRadius = 80f
     circularProgressDrawable.start()
 
     Glide.with(this.context)
             .load(url)
-            .placeholder(circularProgressDrawable)
+            //.placeholder(circularProgressDrawable)
+            .transition(DrawableTransitionOptions.withCrossFade())
             .into(this)
 }

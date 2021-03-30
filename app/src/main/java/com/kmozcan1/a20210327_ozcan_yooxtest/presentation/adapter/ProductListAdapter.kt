@@ -10,7 +10,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setImageUrl
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.
  */
-class ProductListAdapter (private val productList: MutableList<ProductUiModel>) :
+class ProductListAdapter (val productList: MutableList<ProductUiModel>) :
         RecyclerView.Adapter<ProductListAdapter.ProductListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListItemViewHolder {
@@ -28,6 +28,12 @@ class ProductListAdapter (private val productList: MutableList<ProductUiModel>) 
 
     override fun getItemCount(): Int {
         return productList.size
+    }
+
+    // Adds the list of products to the RecyclerView
+    fun addProductList(productListResult: List<ProductUiModel>) {
+        productList.addAll(productListResult)
+        notifyDataSetChanged()
     }
 
     // For binding the brand, category, price and the image url
