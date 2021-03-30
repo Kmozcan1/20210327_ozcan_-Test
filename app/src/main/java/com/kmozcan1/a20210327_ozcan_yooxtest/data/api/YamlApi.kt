@@ -15,10 +15,31 @@ import retrofit2.http.Query
 @JvmSuppressWildcards
 interface YamlApi  {
 
-    /** Request method for the "/searchresult/ */
+    /** Request method for the "/searchresult" */
     @Headers(
         "Accept: application/vnd.github.v3+json"
     )
     @GET("searchresult")
     fun getProducts(): Single<SearchResultResponse>
+
+    /** Request method for the "/latest" */
+    @Headers(
+            "Accept: application/vnd.github.v3+json"
+    )
+    @GET("latest")
+    fun getLatestProducts(): Single<SearchResultResponse>
+
+    /** Request method for the "/lowest" */
+    @Headers(
+            "Accept: application/vnd.github.v3+json"
+    )
+    @GET("lowest")
+    fun getLowPriceProducts(): Single<SearchResultResponse>
+
+    /** Request method for the "/highest" */
+    @Headers(
+            "Accept: application/vnd.github.v3+json"
+    )
+    @GET("highest")
+    fun getHighPriceProducts(): Single<SearchResultResponse>
 }

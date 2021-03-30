@@ -1,6 +1,7 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.GetProductsUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.mapper.ProductDomainToUiMapper
@@ -19,10 +20,10 @@ class ProductListViewModel @Inject constructor(
         setViewState(ProductListViewState.initial())
     }
 
-    fun getProducts() {
+    fun getProducts(productSortType: ProductSortType) {
         setViewState(ProductListViewState.loading())
         getProductsUseCase.execute(
-            GetProductsUseCase.Params(),
+            GetProductsUseCase.Params(productSortType),
             onSuccess = { productList ->
                 setViewState(ProductListViewState
                     .productListResult(productDomainToUiMapper.transform(productList)))

@@ -1,5 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase
 
+import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.manager.InternetManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
@@ -18,9 +19,10 @@ import javax.inject.Inject
 class GetProductsUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ): SingleUseCase<List<Product>, GetProductsUseCase.Params>() {
-    data class Params(val void: Void? = null)
+    data class Params(val productSortType: ProductSortType)
 
     override fun buildObservable(params: Params?): Single<List<Product>> {
-        return productRepository.getProductList().map { productList -> productList }
+        return productRepository
+                .getProductList(params!!.productSortType).map { productList -> productList }
     }
 }

@@ -2,20 +2,35 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="productListFragment" type="com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductListFragment"/>
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/productListLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.view.ProductListFragment">
 
+        <Button
+            android:id="@+id/sortProductsButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/freight_sans_bold"
+            android:onClick="@{productListFragment::onSortButtonClick}"
+            android:text="@string/sort_products"
+            app:icon="@drawable/ic_baseline_sort_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productListRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/sortProductsButton" />
 
         <TextView
             android:id="@+id/connectivityWarningTextView"

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType"/>
+        <variable name="productListFragment" type="com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductListFragment"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/defaultSortButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/freight_sans_medium"
+            android:gravity="center|start"
+            android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.DEFAULT)}"
+            android:text="@string/sort_default"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/latestSortButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/freight_sans_medium"
+            android:gravity="center|start"
+            android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.LATEST_ARRIVALS)}"
+            android:text="@string/sort_latest_arrivals"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/defaultSortButton" />
+
+        <Button
+            android:id="@+id/lowPriceSortButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/freight_sans_medium"
+            android:gravity="center|start"
+            android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.LOW_PRICE)}"
+            android:text="@string/sort_low_price"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/latestSortButton" />
+
+        <Button
+            android:id="@+id/highPriceSortButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/freight_sans_medium"
+            android:gravity="center|start"
+            android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.HIGH_PRICE)}"
+            android:text="@string/sort_high_price"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lowPriceSortButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
