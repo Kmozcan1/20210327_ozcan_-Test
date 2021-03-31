@@ -8,4 +8,5 @@
     <string name="sort_latest_arrivals">Latest Arrivals</string>
     <string name="sort_low_price">Low Price</string>
     <string name="sort_high_price">High Price</string>
+    <string name="browsing_history">History</string>
 </resources>

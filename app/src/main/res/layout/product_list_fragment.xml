@@ -11,16 +11,47 @@
         android:layout_height="match_parent"
         tools:context=".presentation.view.ProductListFragment">
 
-        <Button
-            android:id="@+id/sortProductsButton"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontalProductBarrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sortProductsButton"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sortProductsButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/freight_sans_bold"
+            android:gravity="center_horizontal|start|center_vertical"
             android:onClick="@{productListFragment::onSortButtonClick}"
             android:text="@string/sort_products"
             app:icon="@drawable/ic_baseline_sort_24"
+            app:layout_constraintEnd_toStartOf="@+id/sortButtonGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/historyButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/freight_sans_bold"
+            android:gravity="center_horizontal|center_vertical|end"
+            android:onClick="@{productListFragment::onHistoryButtonClick}"
+            android:text="@string/browsing_history"
+            app:icon="@drawable/ic_baseline_history_24"
+            app:iconGravity="end"
+            app:layout_constraintBottom_toBottomOf="@+id/sortProductsButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/historyButtonGuideline"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -30,9 +61,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sortProductsButton" />
+            app:layout_constraintTop_toBottomOf="@id/horizontalProductBarrier"
+            app:layout_constraintVertical_bias="0.5" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/connectivityWarningTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,5 +88,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/sortButtonGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/historyButtonGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.63" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

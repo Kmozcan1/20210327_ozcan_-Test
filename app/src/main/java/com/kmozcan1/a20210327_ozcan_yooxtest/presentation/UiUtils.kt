@@ -32,8 +32,8 @@ fun ImageView.setImageUrl(url: String?) {
     circularProgressDrawable.start()
 
     Glide.with(this.context)
-            .load(url)
-            //.placeholder(circularProgressDrawable)
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(this)
+        .load(url)
+        //.placeholder(circularProgressDrawable)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
 }

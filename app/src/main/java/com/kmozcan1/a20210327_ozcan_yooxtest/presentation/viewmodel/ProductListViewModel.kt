@@ -16,6 +16,8 @@ class ProductListViewModel @Inject constructor(
     private val productDomainToUiMapper: ProductDomainToUiMapper
 ) : BaseViewModel<ProductListViewState>() {
 
+    var hasRetainedList: Boolean = false
+
     init {
         setViewState(ProductListViewState.initial())
     }

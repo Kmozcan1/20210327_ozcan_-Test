@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductListFragmentBinding
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
@@ -31,7 +32,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
 
     // RecyclerView Adapter
     private val productListAdapter: ProductListAdapter by lazy {
-        ProductListAdapter(mutableListOf())
+        ProductListAdapter(mutableListOf()) { productBrand ->
+            onProductListItemClick(productBrand)
+        }
     }
 
     // Product sort bottom sheet fragment instance, inflated when the sort button is tapped
@@ -88,7 +91,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
                         // can be useful is actual search is implemented
                     } else {
                         // add the list to the RecyclerView
-                        productListAdapter.addProductList(productListResult)
+                            productListAdapter.addProductList(productListResult)
                     }
                 }
             }
@@ -123,6 +126,12 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
         // close the bottom sheet fragment
         productSortBottomSheetFragment.dismiss()
 
+        // clears the previous list
+        productListAdapter.clearProductList()
+
+        // scrolls to the top of the product ist
+        productListAdapter.scrollToTop()
+
         // update the button text
         binding.sortProductsButton.text = when (productSortType) {
             DEFAULT ->
@@ -137,6 +146,20 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
 
         // call viewModel method to observe the list
         viewModel.getProducts(productSortType)
+    }
+
+    /** Called when an item from product list is clicked */
+    private fun onProductListItemClick(productBrand: String) {
+        val navAction = ProductListFragmentDirections
+            .actionProductListFragmentToProductDetailFragment(productBrand)
+        navController.navigate(navAction)
+    }
+
+    /** Called when the historyButton is clicked, navigates to BrowsingHistoryFragment */
+    fun onHistoryButtonClick(v: View) {
+        val navAction = ProductListFragmentDirections
+            .actionProductListFragmentToBrowsingHistoryFragment()
+        navController.navigate(navAction)
     }
 
     /** Invoked when the internet is disconnected */
@@ -160,4 +183,8 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
         super.onInternetConnected()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        productListAdapter.clearProductList()
+    }
 }

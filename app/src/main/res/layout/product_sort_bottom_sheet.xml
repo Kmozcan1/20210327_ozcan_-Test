@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/defaultSortButton"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
@@ -23,11 +23,13 @@
             android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.DEFAULT)}"
             android:text="@string/sort_default"
             android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:rippleColor="?attr/colorControlHighlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/latestSortButton"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
@@ -37,6 +39,8 @@
             android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.LATEST_ARRIVALS)}"
             android:text="@string/sort_latest_arrivals"
             android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:rippleColor="?attr/colorControlHighlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,12 +56,14 @@
             android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.LOW_PRICE)}"
             android:text="@string/sort_low_price"
             android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:rippleColor="?attr/colorControlHighlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/latestSortButton" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/highPriceSortButton"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
@@ -67,6 +73,8 @@
             android:onClick="@{() -> productListFragment.onBottomSheetButtonClick(ProductSortType.HIGH_PRICE)}"
             android:text="@string/sort_high_price"
             android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:rippleColor="?attr/colorControlHighlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

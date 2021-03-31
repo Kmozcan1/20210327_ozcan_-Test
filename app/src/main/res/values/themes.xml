@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:textColorPrimary">@color/black</item>
+        <item name="colorControlHighlight">@color/ripple_material_light</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -20,6 +21,7 @@
         <item name="circularProgressIndicatorStyle">@style/CircularProgressStyle</item>
 
         <item name="toolbarStyle">@style/ActionBarStyle</item>
+
     </style>
 
     <style name="Theme.YooxTest.NoActionBar">
