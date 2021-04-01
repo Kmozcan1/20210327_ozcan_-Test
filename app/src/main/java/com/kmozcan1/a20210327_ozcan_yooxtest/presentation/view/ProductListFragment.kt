@@ -51,10 +51,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     private fun setProductList() {
-        with(binding) {
+        binding.run {
             productListRecyclerView
                 .setRecyclerView(GridLayoutManager(context, 2), productListAdapter)
-            // will set callback listener
         }
     }
 

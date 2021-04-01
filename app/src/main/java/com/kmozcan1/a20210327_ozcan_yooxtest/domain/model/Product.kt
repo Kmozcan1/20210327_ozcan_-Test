@@ -11,7 +11,7 @@ data class Product(
         private val formattedFullPrice: String,
         private val formattedDiscountedPrice: String,
         private val code10: String
-) {
+        ) {
     companion object {
         private const val IMAGE_URL_PREFIX = "https://cdn.yoox.biz/"
         private const val IMAGE_URL_SUFFIX = "_11_f.jpg"
@@ -21,11 +21,11 @@ data class Product(
 
     val imageUrl: String = generateImageUrl()
 
-    // Returns the full price if it is equal to discounted price
-    // or the discounted price if otherwise
-    // Ultimately the same thing as always returning the discounted price,
-    // but these were my instructions
+    /** Returns the full price if it is equal to discounted price
+     * or the discounted price if otherwise */
     private fun getPreferredPrice() : String {
+        // Ultimately the same thing as always returning the discounted price,
+        // but these were my instructions
         return if (formattedFullPrice.filter {it.isDigit()}
                 == formattedDiscountedPrice.filter { it.isDigit() }) {
             formattedFullPrice

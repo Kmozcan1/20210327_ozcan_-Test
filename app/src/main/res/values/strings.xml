@@ -9,4 +9,6 @@
     <string name="sort_low_price">Low Price</string>
     <string name="sort_high_price">High Price</string>
     <string name="browsing_history">History</string>
+    <string name="size">Size</string>
+    <string name="product_information">Product Information</string>
 </resources>

@@ -8,10 +8,8 @@ import javax.inject.Inject
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.
  *
- * Maps Product domain model to its UI model.
+ * Maps [Product] domain model to its UI model.
  */
-// This is required because UI model needs to receive a different
-// price value based on a simple condition. And it doesn't require the code10 attribute.
 class ProductDomainToUiMapper @Inject constructor() : Mapper<Product, ProductUiModel> {
     /** Maps [Product] object into [ProductUiModel] object*/
     override fun map(inModel: Product): ProductUiModel = inModel.run {

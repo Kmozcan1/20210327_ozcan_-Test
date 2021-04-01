@@ -26,7 +26,7 @@ class ProductListAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductListItemViewHolder, position: Int) {
-        with(productList[position]) {
+        productList[position].run {
             holder.bind(brand, category, price, imageUrl)
         }
     }
@@ -66,7 +66,7 @@ class ProductListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(brand: String, category: String, price: String, imageUrl: String) {
-            with(binding) {
+            binding.run {
                 brandNameTextView.text = brand
                 categoryTextView.text = category
                 priceTextView.text = price
