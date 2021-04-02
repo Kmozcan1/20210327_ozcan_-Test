@@ -111,7 +111,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
     /** Observes the ViewState LiveData */
     private fun viewStateObserver() = Observer<ProductDetailViewState> { viewState ->
         when (viewState.state) {
-            ERROR -> makeToast(viewState.errorMessage)
+            ERROR -> makeToast(viewState.errorMessage) // for debugging purposes
             INITIAL -> {
                 args.run {
                     if (!getIsConnectedToInternet()) {
@@ -132,7 +132,10 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
                 handleLoadingState(isLoading = true)
             }
             BROWSING_HISTORY_UPDATED -> {
-                viewModel.getProductDetail()
+                browsingHistoryUpdated = true
+                if (getIsConnectedToInternet()) {
+                    viewModel.getProductDetail()
+                }
             }
             PRODUCT_DETAIL_RESULT -> {
                 productDetailsFetched = true
@@ -191,7 +194,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
 
     /** Shows/hides the progress bar and view components */
     private fun handleLoadingState(isLoading: Boolean) {
-        if (isLoading) {
+        if (isLoading && getIsConnectedToInternet()) {
             binding.productDetailProgressBar.visibility = View.VISIBLE
             binding.productDetailContainer.visibility = View.INVISIBLE
         } else {
