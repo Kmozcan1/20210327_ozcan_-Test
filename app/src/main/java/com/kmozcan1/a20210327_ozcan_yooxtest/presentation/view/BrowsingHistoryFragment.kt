@@ -46,7 +46,6 @@ class BrowsingHistoryFragment :
     }
 
     override fun onViewBound() {
-        setSupportActionBar(hasNavigationButton = true)
         setBrowsingHistoryList()
     }
 

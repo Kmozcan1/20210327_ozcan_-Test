@@ -81,7 +81,6 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
 
 
     override fun onViewBound() {
-        setSupportActionBar(hasNavigationButton = true)
         setProductImageViewPager()
         setSizeButtonList()
         setColorButtonList()

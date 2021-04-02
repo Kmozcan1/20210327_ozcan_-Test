@@ -30,13 +30,14 @@
                         android:id="@+id/logoImageView"
                         android:layout_width="64dp"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/logo_desc"
                         android:scaleType="centerInside"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_yoox_logo"
-                        android:contentDescription="@string/logo_desc" />
+                        app:srcCompat="@drawable/ic_yoox_logo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -45,7 +45,6 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     override fun onViewBound() {
-        setSupportActionBar(hasNavigationButton = false)
         // Used for calling button click methods from xml
         binding.productListFragment = this
 
