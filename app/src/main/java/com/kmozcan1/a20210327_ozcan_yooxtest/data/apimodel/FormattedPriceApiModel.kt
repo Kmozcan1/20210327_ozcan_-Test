@@ -7,5 +7,4 @@ import com.squareup.moshi.Json
  */
 data class FormattedPriceApiModel (
         @Json(name = "FullPrice") val formattedPrice: String,
-        @Json(name = "DiscountedPrice") val discountedPrice: String
-        )
+        @Json(name = "DiscountedPrice") val discountedPrice: String)

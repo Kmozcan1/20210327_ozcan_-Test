@@ -7,5 +7,4 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.domain.model
  */
 data class Size (
     val id: Int,
-    val name: String
-    )
+    val name: String)

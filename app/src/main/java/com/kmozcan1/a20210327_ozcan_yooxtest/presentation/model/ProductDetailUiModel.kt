@@ -2,6 +2,8 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model
 
 /**
  * Created by Kadir Mert Özcan on 01-Apr-21.
+ *
+ *  * Presentation layer model for ProductDetail
  */
 class ProductDetailUiModel (
         val brand: String,
@@ -9,5 +11,4 @@ class ProductDetailUiModel (
         val price: String,
         val productInfo: String,
         val colorVariantList: List<ColorVariantUiModel>,
-        val sizeList: List<String>
-        )
+        val sizeList: List<String>)

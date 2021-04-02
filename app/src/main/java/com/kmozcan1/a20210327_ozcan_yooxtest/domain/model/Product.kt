@@ -10,8 +10,7 @@ data class Product(
         val category: String,
         private val formattedFullPrice: String,
         private val formattedDiscountedPrice: String,
-        private val code10: String
-        ) {
+        private val code10: String) {
     companion object {
         private const val IMAGE_URL_PREFIX = "https://cdn.yoox.biz/"
         private const val IMAGE_URL_SUFFIX = "_11_f.jpg"

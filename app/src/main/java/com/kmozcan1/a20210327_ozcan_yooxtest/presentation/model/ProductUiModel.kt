@@ -9,5 +9,4 @@ data class ProductUiModel(
         val brand: String,
         val category: String,
         val price: String,
-        val imageUrl: String
-)
+        val imageUrl: String)

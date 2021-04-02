@@ -15,5 +15,4 @@ data class ProductDetailResponse (
         @Json(name = "FormattedPrice") val formattedPrice: FormattedPriceApiModel,
         @Json(name = "Colors") val colors: List<ColorApiModel>,
         @Json(name = "Sizes") val sizes: List<SizeApiModel>,
-        @Json(name = "ColorSizeQty") val colorSizeQty: List<ColorSizeQuantityApiModel>
-        )
+        @Json(name = "ColorSizeQty") val colorSizeQty: List<ColorSizeQuantityApiModel>)

@@ -8,5 +8,4 @@ import com.squareup.moshi.Json
 data class ColorApiModel(
         @Json(name = "ColorCode") val colorCode: String,
         @Json(name = "Name") val name: String,
-        @Json(name = "Rgb") val rgb: String
-)
+        @Json(name = "Rgb") val rgb: String)

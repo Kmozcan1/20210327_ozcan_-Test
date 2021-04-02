@@ -7,5 +7,4 @@ import com.squareup.moshi.Json
  */
 data class ColorSizeQuantityApiModel(
         @Json(name = "ColorCode") val colorCode: String,
-        @Json(name = "SizeId") val sizeId: Int
-)
+        @Json(name = "SizeId") val sizeId: Int)

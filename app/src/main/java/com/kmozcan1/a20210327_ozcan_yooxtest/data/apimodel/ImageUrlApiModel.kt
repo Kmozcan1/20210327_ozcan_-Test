@@ -8,5 +8,4 @@ import com.squareup.moshi.Json
  *
  */
 data class ImageUrlApiModel (
-    @Json(name = "Normal") val normal: List<String>
-)
+    @Json(name = "Normal") val normal: List<String>)

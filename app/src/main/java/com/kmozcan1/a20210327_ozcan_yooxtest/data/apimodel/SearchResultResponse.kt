@@ -9,5 +9,4 @@ import com.squareup.moshi.Json
  * "/searchresult", "/latest", "/lowest" and "/highest" calls
  */
 data class SearchResultResponse (
-    @Json(name = "Items") val products: List<ProductApiModel>
-)
+    @Json(name = "Items") val products: List<ProductApiModel>)

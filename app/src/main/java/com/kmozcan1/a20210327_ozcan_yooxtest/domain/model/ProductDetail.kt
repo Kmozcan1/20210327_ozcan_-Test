@@ -15,8 +15,7 @@ data class ProductDetail (
         val sizeList: List<Size>,
         val productInfoList: List<String>,
         val colorSizeQuantityList: List<ColorSizeQuantity>,
-        val imageUrlList: List<String>
-        ) {
+        val imageUrlList: List<String>) {
 
         val price: String = getPreferredPrice()
         val productInfoString = concentrateProductInfo()

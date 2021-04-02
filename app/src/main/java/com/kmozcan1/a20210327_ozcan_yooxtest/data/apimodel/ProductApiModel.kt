@@ -14,5 +14,4 @@ data class ProductApiModel (
         @Json(name = "MicroCategory") val microCategory: String,
         @Json(name = "FormattedFullPrice") val formattedFullPrice: String,
         @Json(name = "FormattedDiscountedPrice") val formattedDiscountedPrice: String,
-        @Json(name = "Cod10") val cod10: String
-        )
+        @Json(name = "Cod10") val cod10: String)

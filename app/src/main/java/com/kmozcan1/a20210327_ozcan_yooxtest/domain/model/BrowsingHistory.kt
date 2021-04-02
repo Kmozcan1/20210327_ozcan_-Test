@@ -4,6 +4,8 @@ import java.util.*
 
 /**
  * Created by Kadir Mert Özcan on 02-Apr-21.
+ *
+ * Data layer model for browsing history
  */
 data class BrowsingHistory(
         val brand: String,

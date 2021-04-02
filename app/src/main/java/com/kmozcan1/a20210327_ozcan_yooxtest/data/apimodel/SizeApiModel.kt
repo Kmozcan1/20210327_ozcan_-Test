@@ -7,5 +7,4 @@ import com.squareup.moshi.Json
  */
 data class SizeApiModel(
         @Json(name = "Id") val id: Int,
-        @Json(name = "Name") val name: String
-        )
+        @Json(name = "Name") val name: String)
