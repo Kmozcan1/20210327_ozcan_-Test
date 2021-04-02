@@ -35,6 +35,7 @@
             android:insetTop="0dp"
             android:insetRight="0dp"
             android:insetBottom="0dp"
+            android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="@+id/selectedColorIndicatorImageView"
             app:layout_constraintEnd_toEndOf="@+id/selectedColorIndicatorImageView"
             app:layout_constraintStart_toStartOf="@+id/selectedColorIndicatorImageView"

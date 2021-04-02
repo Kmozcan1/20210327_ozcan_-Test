@@ -1,5 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexDirection
@@ -102,15 +103,13 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
         when (viewState.state) {
             ERROR -> makeToast(viewState.errorMessage)
             INITIAL -> {
-                /*if(productListAdapter.productList.isEmpty()) {
-                    binding.productListProgressBar.visibility = View.VISIBLE
-                }*/
+                handleLoadingState(isLoading = true)
                 if (getIsConnectedToInternet()) {
                     viewModel.getProductDetail()
                 }
             }
             LOADING -> {
-                //handleLoadingState(isLoading = true)
+                handleLoadingState(isLoading = true)
             }
             PRODUCT_DETAIL_RESULT -> {
                 //handleLoadingState(isLoading = false)
@@ -142,7 +141,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
                 .refreshButtons(productDetailResult.colorVariantList[0].availableSizeList)
     }
 
-    // Returns color button callback listener object
+    /** Returns color button callback listener object */
     private fun colorButtonCallbackListener() = object : ColorButtonListAdapter.CallbackListener {
         override fun onColorButtonClick(colorVariant: ColorVariantUiModel) {
             productImagePagerAdapter.apply {
@@ -156,13 +155,25 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
             // Set color label
             binding.colorDetailTextView.text =
                     context?.getString(R.string.color_name, colorVariant.name)
+            handleLoadingState(false)
         }
     }
 
-    // Returns size button callback listener object
+    /** Returns size button callback listener object */
     private fun sizeButtonCallbackListener() = object : SizeButtonListAdapter.CallbackListener {
         override fun onSizeButtonClick() {
             // no implementation needed at the moment
+        }
+    }
+
+    /** Shows/hides the progress bar and view components */
+    private fun handleLoadingState(isLoading: Boolean) {
+        if (isLoading) {
+            binding.productDetailProgressBar.visibility = View.VISIBLE
+            binding.productDetailContainer.visibility = View.INVISIBLE
+        } else {
+            binding.productDetailProgressBar.visibility = View.GONE
+            binding.productDetailContainer.visibility = View.VISIBLE
         }
     }
 }
