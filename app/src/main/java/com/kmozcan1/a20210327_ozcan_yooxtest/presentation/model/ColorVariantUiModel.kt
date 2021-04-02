@@ -6,6 +6,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model
 data class ColorVariantUiModel(
         val name: String,
         val rgb: String,
+        val colorCode: String,
         val imgUrlList: MutableList<String>,
         val availableSizeList: MutableList<String?>
 )

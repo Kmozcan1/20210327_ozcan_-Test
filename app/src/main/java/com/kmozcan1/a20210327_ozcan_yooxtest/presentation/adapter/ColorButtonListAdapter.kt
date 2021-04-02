@@ -1,6 +1,5 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ColorButtonListItemBinding
+import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ColorVariantUiModel
 
 /**
  * Created by Kadir Mert Özcan on 01-Apr-21.
  */
 class ColorButtonListAdapter(
-    val rgbList: MutableList<String>,
+    val colorList: MutableList<ColorVariantUiModel>,
     private val callbackListener: CallbackListener
 ) :
     RecyclerView.Adapter<ColorButtonListAdapter.ColorButtonListViewHolder>() {
@@ -31,7 +31,7 @@ class ColorButtonListAdapter(
     }
 
     override fun onBindViewHolder(holder: ColorButtonListViewHolder, position: Int) {
-        holder.setup(rgbList[position], position)
+        holder.setup(colorList[position], position)
     }
 
     override fun onAttachedToRecyclerView(recView: RecyclerView) {
@@ -41,20 +41,20 @@ class ColorButtonListAdapter(
 
 
     override fun getItemCount(): Int {
-        return rgbList.size
+        return colorList.size
     }
 
-    // Adds the list of products image urls to the RecyclerView
-    fun addImageUrlList(colorCodeListItems: List<String>) {
+    // Adds the list of colors the RecyclerView
+    fun addColorList(colorCodeListItems: List<ColorVariantUiModel>) {
         val startPosition = itemCount
-        rgbList.addAll(colorCodeListItems)
+        colorList.addAll(colorCodeListItems)
         notifyItemRangeInserted(startPosition, colorCodeListItems.size)
     }
 
     // Clears the RecyclerView data
-    fun clearImageUrlList() {
-        val size = rgbList.size
-        rgbList.clear()
+    fun clearColorList() {
+        val size = colorList.size
+        colorList.clear()
         notifyItemRangeRemoved(0, size)
     }
 
@@ -63,9 +63,10 @@ class ColorButtonListAdapter(
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun setup(rgb: String, position: Int) {
+        fun setup(color: ColorVariantUiModel, position: Int) {
             binding.colorButton.run {
                 // Sets the button color
+                val rgb = color.rgb
                 setBackgroundColor(Color.parseColor("#$rgb"))
 
                 binding.colorButton.setOnClickListener {
@@ -94,7 +95,7 @@ class ColorButtonListAdapter(
 
                     selectedButtonPosition = position
 
-                    callbackListener.onColorButtonClick()
+                    callbackListener.onColorButtonClick(color.colorCode)
                 }
 
                 // Manually click the first button on setup
@@ -108,6 +109,6 @@ class ColorButtonListAdapter(
 
     /** Listener interface to make callbacks to the view that uses ColorButtonView */
     interface CallbackListener {
-        fun onColorButtonClick()
+        fun onColorButtonClick(colorCode: String)
     }
 }

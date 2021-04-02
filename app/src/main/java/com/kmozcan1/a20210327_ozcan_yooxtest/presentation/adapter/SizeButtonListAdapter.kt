@@ -42,15 +42,15 @@ class SizeButtonListAdapter(
         return sizeList.size
     }
 
-    // Adds the list of products image urls to the RecyclerView
-    fun addImageUrlList(sizeCodeListItems: List<String>) {
+    // Adds the list of sizes to the RecyclerView
+    fun addSizeList(sizeCodeListItems: List<String>) {
         val startPosition = itemCount
         sizeList.addAll(sizeCodeListItems)
         notifyItemRangeInserted(startPosition, sizeCodeListItems.size)
     }
 
     // Clears the RecyclerView data
-    fun clearImageUrlList() {
+    fun clearSizeList() {
         val size = sizeList.size
         sizeList.clear()
         notifyItemRangeRemoved(0, size)
@@ -61,10 +61,10 @@ class SizeButtonListAdapter(
     ) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun setup(rgb: String, position: Int) {
+        fun setup(sizeName: String, position: Int) {
             binding.sizeButton.run {
-                // Sets the button size
-                setBackgroundColor(Color.parseColor("#$rgb"))
+                // Sets the button text
+                text = sizeName
 
                 binding.sizeButton.setOnClickListener {
                     if (selectedButtonPosition != position) {

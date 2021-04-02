@@ -22,7 +22,7 @@ class ColorVariantDomainToUiMapper @Inject constructor()
     /** Maps [ColorVariant] object into [ColorVariantUiModel] object*/
     override fun map(inModel: ColorVariant): ColorVariantUiModel =
             inModel.run {
-                ColorVariantUiModel(name = name, rgb = rgb,
+                ColorVariantUiModel(name = name, rgb = rgb, colorCode = colorCode,
                         imgUrlList = mutableListOf(), availableSizeList = mutableListOf())
             }
 
