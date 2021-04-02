@@ -91,8 +91,18 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
                         // list doesn't return empty with the current api call,
                         // can be useful is actual search is implemented
                     } else {
+                        // When coming from product detail or history fragment, update sort button
+                        viewModel.run {
+                            getHasRetainedListState()?.let { hasRetainedList ->
+                                if (hasRetainedList) {
+                                    getSortButtonState()?.let { productSortType ->
+                                        updateSortButtonText(productSortType)
+                                    }
+                                }
+                            }
+                        }
                         // add the list to the RecyclerView
-                            productListAdapter.addProductList(productListResult)
+                        productListAdapter.addProductList(productListResult)
                     }
                 }
             }
@@ -134,6 +144,13 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
         productListAdapter.scrollToTop()
 
         // update the button text
+        updateSortButtonText(productSortType)
+
+        // call viewModel method to observe the list
+        viewModel.getProducts(productSortType)
+    }
+
+    private fun updateSortButtonText(productSortType: ProductSortType) {
         binding.sortProductsButton.text = when (productSortType) {
             DEFAULT ->
                 getString(R.string.sort_default)
@@ -144,14 +161,14 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
             HIGH_PRICE ->
                 getString(R.string.sort_high_price)
         }
-
-        // call viewModel method to observe the list
-        viewModel.getProducts(productSortType)
     }
 
     /** Called when an item from product list is clicked
      * Added parameters will be used for updating browsing history */
     private fun onProductListItemClick(product: ProductUiModel) {
+        // So that fragment knows that it already has a list after coming back
+        viewModel.setHasRetainedListState(true)
+
         val navAction: NavDirections
         product.run {
             navAction = ProductListFragmentDirections
