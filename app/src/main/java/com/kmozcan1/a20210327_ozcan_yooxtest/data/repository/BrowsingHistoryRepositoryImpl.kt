@@ -28,8 +28,8 @@ class BrowsingHistoryRepositoryImpl @Inject constructor(
     }
 
     /** Accesses dao to retrieve the browsing history list */
-    override fun getBrowsingHistory(): Single<List<BrowsingHistory>> {
-        return browsingHistoryDao.getBrowsingHistory().map { browsingHistoryList ->
+    override fun getBrowsingHistoryList(): Single<List<BrowsingHistory>> {
+        return browsingHistoryDao.getBrowsingHistoryList().map { browsingHistoryList ->
             browsingHistoryToDomainMapper.transform(browsingHistoryList)
         }
     }

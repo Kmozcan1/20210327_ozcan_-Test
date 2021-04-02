@@ -17,6 +17,8 @@ class ProductListViewModel @Inject constructor(
         setViewState(ProductListViewState.initial())
     }
 
+    /** Calls the use case's execute method (which builds the observable) and starts
+     * and sets the view state upon onSuccess or onError emission */
     fun getProducts(productSortType: ProductSortType) {
         setViewState(ProductListViewState.loading())
         getProductsUseCase.execute(

@@ -14,6 +14,8 @@ class MainViewModel @Inject constructor(
     private val observeInternetConnectionUseCase: ObserveInternetConnectionUseCase
 ) : BaseViewModel<MainViewState>() {
 
+    /** Calls the use case's execute method (which builds the observable) and starts
+     * and sets the view state upon onNext or onError emission */
     fun observeInternetConnection() {
         observeInternetConnectionUseCase.execute(
             onComplete = {},

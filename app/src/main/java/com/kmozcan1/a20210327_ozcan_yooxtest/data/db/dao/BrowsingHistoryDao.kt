@@ -19,6 +19,6 @@ interface BrowsingHistoryDao {
     fun insertBrowsingHistory(entity: BrowsingHistoryEntity) : Completable
 
     @Query("SELECT * FROM ${BrowsingHistoryEntity.TABLE_NAME} ORDER BY visit_datetime DESC" )
-    fun getBrowsingHistory(): Single<List<BrowsingHistoryEntity>>
+    fun getBrowsingHistoryList(): Single<List<BrowsingHistoryEntity>>
 
 }

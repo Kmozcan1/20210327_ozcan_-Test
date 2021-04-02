@@ -5,7 +5,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductDetailUiM
 /**
  * Created by Kadir Mert Özcan on 31-Mar-21.
  */
-class ProductDetailViewState (
+data class ProductDetailViewState (
         val state: State,
         val errorMessage: String? = null,
         val productDetail: ProductDetailUiModel? = null) {

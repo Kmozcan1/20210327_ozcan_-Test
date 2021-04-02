@@ -12,5 +12,5 @@ import io.reactivex.rxjava3.core.Single
  */
 interface BrowsingHistoryRepository {
     fun updateBrowsingHistory(browsingHistory: BrowsingHistory): Completable
-    fun getBrowsingHistory(): Single<List<BrowsingHistory>>
+    fun getBrowsingHistoryList(): Single<List<BrowsingHistory>>
 }

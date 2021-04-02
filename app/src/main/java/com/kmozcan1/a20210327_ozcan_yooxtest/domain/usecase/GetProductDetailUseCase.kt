@@ -10,6 +10,7 @@ import javax.inject.Inject
 
 /**
  * Created by Kadir Mert Özcan on 02-Apr-21.
+ *
  * UseCase class that calls [ProductRepository.getProductDetail] to retrieve product details
  * and builds the [Single] observable that will be observed from the presentation layer
  */
