@@ -16,7 +16,7 @@ class BrowsingHistoryDomainToDataMapper @Inject constructor()
     // These two are essentially the same object, but having different models for each layer
     // is required for the separation of layers and DIP
     override fun map(inModel: BrowsingHistory): BrowsingHistoryEntity = inModel.run {
-        BrowsingHistoryEntity(brand, category, imageUrl, visitDateTime)
+        BrowsingHistoryEntity(code10, brand, category, imageUrl, visitDateTime)
     }
 
     /** Maps each member of a list of [BrowsingHistoryEntity] objects

@@ -6,11 +6,11 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.domain.model
  * Model class for the products that are listed in the first screen of the application.
  */
 data class Product(
+        val code10: String,
         val brand: String,
         val category: String,
         private val formattedFullPrice: String,
-        private val formattedDiscountedPrice: String,
-        private val code10: String) {
+        private val formattedDiscountedPrice: String) {
     companion object {
         private const val IMAGE_URL_PREFIX = "https://cdn.yoox.biz/"
         private const val IMAGE_URL_SUFFIX = "_11_f.jpg"

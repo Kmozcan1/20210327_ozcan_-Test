@@ -3,6 +3,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity.BrowsingHistoryEntity.Companion.BRAND
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity.BrowsingHistoryEntity.Companion.CODE10
 import java.util.*
 
 /**
@@ -10,8 +11,10 @@ import java.util.*
  *
  * Entity object for browsing history table entries
  */
-@Entity(tableName = BrowsingHistoryEntity.TABLE_NAME, primaryKeys = [BRAND])
+@Entity(tableName = BrowsingHistoryEntity.TABLE_NAME, primaryKeys = [CODE10])
 data class BrowsingHistoryEntity(
+        @ColumnInfo(name = CODE10)
+        var code10: String,
         @ColumnInfo(name = BRAND)
         var brand: String,
         @ColumnInfo(name = CATEGORY)
@@ -23,6 +26,7 @@ data class BrowsingHistoryEntity(
 ){
     companion object{
         const val TABLE_NAME = "browsing_history"
+        const val CODE10 = "code10"
         const val BRAND = "brand"
         const val CATEGORY = "category"
         const val IMAGE_URL = "image_url"

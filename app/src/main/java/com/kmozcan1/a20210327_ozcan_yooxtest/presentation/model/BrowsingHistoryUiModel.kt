@@ -8,6 +8,7 @@ import java.util.*
  * Presentation layer model for BrowsingHistory
  */
 data class BrowsingHistoryUiModel (
+        val code10: String,
         val brand: String,
         val category: String,
         val imageUrl: String,

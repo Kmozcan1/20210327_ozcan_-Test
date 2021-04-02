@@ -6,6 +6,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model
  * Presentation layer model for the products that are listed in the first screen of the app.
  */
 data class ProductUiModel(
+        val code10: String,
         val brand: String,
         val category: String,
         val price: String,

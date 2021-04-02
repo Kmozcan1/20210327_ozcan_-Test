@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ProductDomainToUiMapper @Inject constructor() : Mapper<Product, ProductUiModel> {
     /** Maps [Product] object into [ProductUiModel] object*/
     override fun map(inModel: Product): ProductUiModel = inModel.run {
-        ProductUiModel(brand = brand, category = category,
+        ProductUiModel(code10 = code10, brand = brand, category = category,
                 price = price, imageUrl = imageUrl)
     }
 

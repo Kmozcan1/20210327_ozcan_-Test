@@ -8,6 +8,7 @@ import java.util.*
  * Data layer model for browsing history
  */
 data class BrowsingHistory(
+        val code10: String,
         val brand: String,
         val category: String,
         val imageUrl: String,

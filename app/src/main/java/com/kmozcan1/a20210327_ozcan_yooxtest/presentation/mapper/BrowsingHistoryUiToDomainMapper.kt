@@ -16,7 +16,7 @@ class BrowsingHistoryUiToDomainMapper @Inject constructor()
     /** Maps [BrowsingHistoryUiModel] object into [BrowsingHistory] object*/
     override fun map(inModel: BrowsingHistoryUiModel): BrowsingHistory =
             inModel.run {
-                BrowsingHistory(brand, category, imageUrl, visitDateTime)
+                BrowsingHistory(code10, brand, category, imageUrl, visitDateTime)
             }
 
     /** Maps each member of a list of [BrowsingHistoryUiModel] objects
