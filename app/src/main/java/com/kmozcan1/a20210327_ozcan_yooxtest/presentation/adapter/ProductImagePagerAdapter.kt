@@ -28,14 +28,14 @@ class ProductImagePagerAdapter (val imageUrlList: MutableList<String>) :
         return imageUrlList.size
     }
 
-    // Adds the list of products image urls to the RecyclerView
+    /** Adds the list of products image urls to the RecyclerView */
     fun addImageUrlList(imgUrlListResult: List<String>) {
         val startPosition = itemCount
         imageUrlList.addAll(imgUrlListResult)
         notifyItemRangeInserted(startPosition, imgUrlListResult.size)
     }
 
-    // Clears the RecyclerView data
+    /** Clears the RecyclerView data */
     fun clearImageUrlList() {
         val size = imageUrlList.size
         imageUrlList.clear()

@@ -10,5 +10,5 @@ import java.util.*
 data class BrowsingHistory(
         val brand: String,
         val category: String,
-        val image: Base64,
+        val imageUrl: String,
         val  visitDateTime: Date)

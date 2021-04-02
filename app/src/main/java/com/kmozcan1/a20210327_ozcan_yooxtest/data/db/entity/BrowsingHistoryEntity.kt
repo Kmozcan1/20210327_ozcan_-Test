@@ -12,20 +12,20 @@ import java.util.*
  */
 @Entity(tableName = BrowsingHistoryEntity.TABLE_NAME, primaryKeys = [BRAND])
 data class BrowsingHistoryEntity(
-    @ColumnInfo(name = BRAND)
-    var brand: String,
-    @ColumnInfo(name = CATEGORY)
-    var category: String,
-    @ColumnInfo(name = IMAGE)
-    var image: Base64,
-    @ColumnInfo(name = VISIT_DATETIME)
-    var visitDateTime: Date
+        @ColumnInfo(name = BRAND)
+        var brand: String,
+        @ColumnInfo(name = CATEGORY)
+        var category: String,
+        @ColumnInfo(name = IMAGE_URL)
+        var imageUrl: String,
+        @ColumnInfo(name = VISIT_DATETIME)
+        var visitDateTime: Date
 ){
     companion object{
         const val TABLE_NAME = "browsing_history"
         const val BRAND = "brand"
         const val CATEGORY = "category"
-        const val IMAGE = "image"
+        const val IMAGE_URL = "image_url"
         const val VISIT_DATETIME = "visit_datetime"
     }
 }

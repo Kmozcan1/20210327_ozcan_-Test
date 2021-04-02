@@ -18,7 +18,8 @@ class ProductListAdapter(
 
     lateinit var recyclerView: RecyclerView
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListItemViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) :
+                ProductListItemViewHolder {
         // Inflate with data binding
         val binding = ProductListItemBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false)
