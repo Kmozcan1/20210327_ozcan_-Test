@@ -19,11 +19,27 @@
         android:id="@+id/productDetailFragment"
         android:name="com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductDetailFragment"
         tools:layout="@layout/product_detail_fragment" >
+        <argument
+            android:name="code10"
+            app:argType="string" />
+        <argument
+            android:name="productBrand"
+            app:argType="string" />
+        <argument
+            android:name="productCategory"
+            app:argType="string" />
+        <argument
+            android:name="productImageUrl"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/browsingHistoryFragment"
         android:name="com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.BrowsingHistoryFragment"
         android:label="browsing_history_fragment"
-        tools:layout="@layout/browsing_history_fragment" />
+        tools:layout="@layout/browsing_history_fragment" >
+        <action
+            android:id="@+id/action_browsingHistoryFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
 </navigation>

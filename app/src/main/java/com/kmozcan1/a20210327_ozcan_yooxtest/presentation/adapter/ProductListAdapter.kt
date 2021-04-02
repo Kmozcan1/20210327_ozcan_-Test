@@ -13,7 +13,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductListFragme
  */
 class ProductListAdapter(
     val productList: MutableList<ProductUiModel>,
-    private val listener: (String) -> Unit) :
+    private val listener: (ProductUiModel) -> Unit) :
         RecyclerView.Adapter<ProductListAdapter.ProductListItemViewHolder>() {
 
     lateinit var recyclerView: RecyclerView
@@ -27,9 +27,7 @@ class ProductListAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductListItemViewHolder, position: Int) {
-        productList[position].run {
-            holder.bind(brand, category, price, imageUrl)
-        }
+        holder.bind(productList[position])
     }
 
     override fun onAttachedToRecyclerView(recView: RecyclerView) {
@@ -63,17 +61,17 @@ class ProductListAdapter(
     // For binding the brand, category, price, image url and the item click listener
     inner class ProductListItemViewHolder(
             private val binding: ProductListItemBinding,
-            val listener: (String) -> Unit
+            val listener: (ProductUiModel) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(brand: String, category: String, price: String, imageUrl: String) {
+        fun bind(product: ProductUiModel) {
             binding.run {
-                brandNameTextView.text = brand
-                categoryTextView.text = category
-                priceTextView.text = price
-                productImageView.setImageUrl(imageUrl)
+                brandNameTextView.text = product.brand
+                categoryTextView.text = product.category
+                priceTextView.text = product.price
+                productImageView.setImageUrl(product.imageUrl)
                 root.setOnClickListener{
-                    listener(brand)
+                    listener(product)
                 }
             }
         }

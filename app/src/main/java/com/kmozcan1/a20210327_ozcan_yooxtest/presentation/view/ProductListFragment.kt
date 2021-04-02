@@ -3,6 +3,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
@@ -10,6 +11,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductListFragmentBind
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType.*
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ProductListAdapter
+import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setRecyclerView
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel.ProductListViewModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductListViewState
@@ -32,8 +34,8 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
 
     // RecyclerView Adapter
     private val productListAdapter: ProductListAdapter by lazy {
-        ProductListAdapter(mutableListOf()) { productBrand ->
-            onProductListItemClick(productBrand)
+        ProductListAdapter(mutableListOf()) { product ->
+            onProductListItemClick(product)
         }
     }
 
@@ -147,10 +149,14 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
         viewModel.getProducts(productSortType)
     }
 
-    /** Called when an item from product list is clicked */
-    private fun onProductListItemClick(productBrand: String) {
-        val navAction = ProductListFragmentDirections
-            .actionProductListFragmentToProductDetailFragment()
+    /** Called when an item from product list is clicked
+     * Added parameters will be used for updating browsing history */
+    private fun onProductListItemClick(product: ProductUiModel) {
+        val navAction: NavDirections
+        product.run {
+            navAction = ProductListFragmentDirections
+                    .actionProductListFragmentToProductDetailFragment(code10, brand, category, imageUrl)
+        }
         navController.navigate(navAction)
     }
 

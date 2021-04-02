@@ -13,7 +13,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.SizeButtonListItemBindi
  * Created by Kadir Mert Özcan on 01-Apr-21.
  */
 class SizeButtonListAdapter(
-        val sizeList: MutableList<String>,
+        private val sizeList: MutableList<String>,
         private val callbackListener: CallbackListener
 ) :
         RecyclerView.Adapter<SizeButtonListAdapter.SizeButtonListViewHolder>() {

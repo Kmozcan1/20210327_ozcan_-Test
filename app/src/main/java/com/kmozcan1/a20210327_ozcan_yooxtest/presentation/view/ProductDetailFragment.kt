@@ -2,6 +2,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -14,6 +15,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ColorButtonListAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ProductImagePagerAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.SizeButtonListAdapter
+import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.BrowsingHistoryUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ColorVariantUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductDetailUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setRecyclerView
@@ -21,6 +23,8 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel.ProductDetai
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductDetailViewState
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductDetailViewState.State.*
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDateTime
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -34,7 +38,11 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
 
     override val viewModelClass: Class<ProductDetailViewModel> = ProductDetailViewModel::class.java
 
+    private var browsingHistoryUpdated: Boolean = false
+
     private var productDetailsFetched: Boolean = false
+
+    private val args: ProductDetailFragmentArgs by navArgs()
 
     // RecyclerView Adapter for product images
     private val productImagePagerAdapter: ProductImagePagerAdapter by lazy {
@@ -105,17 +113,26 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
         when (viewState.state) {
             ERROR -> makeToast(viewState.errorMessage)
             INITIAL -> {
-                if (!getIsConnectedToInternet()) {
-                    binding.productDetailConnectivityWarningTextView.visibility = View.VISIBLE
-                    handleLoadingState(isLoading = false)
-                } else {
-                    handleLoadingState(isLoading = true)
-                    viewModel.getProductDetail()
+                args.run {
+                    if (!getIsConnectedToInternet()) {
+                        binding.productDetailConnectivityWarningTextView.visibility = View.VISIBLE
+                        handleLoadingState(isLoading = false)
+                    } else {
+                        handleLoadingState(isLoading = true)
+                    }
+                    viewModel.updateBrowsingHistory(
+                            BrowsingHistoryUiModel(
+                                    code10, productBrand, productCategory,
+                                    productImageUrl, Date(System.currentTimeMillis())
+                            )
+                    )
                 }
-
             }
             LOADING -> {
                 handleLoadingState(isLoading = true)
+            }
+            BROWSING_HISTORY_UPDATED -> {
+                viewModel.getProductDetail()
             }
             PRODUCT_DETAIL_RESULT -> {
                 productDetailsFetched = true
@@ -201,7 +218,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
         if (previouslyDisconnected) {
             binding.productDetailConnectivityWarningTextView.visibility = View.GONE
         }
-        if (previouslyDisconnected && !productDetailsFetched) {
+        if (previouslyDisconnected && browsingHistoryUpdated && !productDetailsFetched) {
             viewModel.getProductDetail()
         }
         super.onInternetConnected()

@@ -10,7 +10,7 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setImageUrl
 /**
  * Created by Kadir Mert Özcan on 31-Mar-21.
  */
-class ProductImagePagerAdapter (val imageUrlList: MutableList<String>) :
+class ProductImagePagerAdapter (private val imageUrlList: MutableList<String>) :
         RecyclerView.Adapter<ProductImagePagerAdapter.ProductImagePagerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):

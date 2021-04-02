@@ -13,4 +13,5 @@
     <string name="product_information">Product Information</string>
     <string name="color_name">Color: %s</string>
     <string name="logo_desc">logo</string>
+    <string name="browsing_history_is_empty">Browsing history is empty</string>
 </resources>

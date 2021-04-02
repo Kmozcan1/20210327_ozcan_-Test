@@ -24,6 +24,10 @@ data class ProductDetailViewState (
                 state = State.LOADING
         )
 
+        fun browsingHistoryUpdated(): ProductDetailViewState = ProductDetailViewState(
+                state = State.BROWSING_HISTORY_UPDATED
+        )
+
         fun productDetailResult(productDetail: ProductDetailUiModel):
                 ProductDetailViewState = ProductDetailViewState(
                 state = State.PRODUCT_DETAIL_RESULT,
@@ -35,6 +39,7 @@ data class ProductDetailViewState (
         ERROR,
         INITIAL,
         LOADING,
+        BROWSING_HISTORY_UPDATED,
         PRODUCT_DETAIL_RESULT
     }
 }
