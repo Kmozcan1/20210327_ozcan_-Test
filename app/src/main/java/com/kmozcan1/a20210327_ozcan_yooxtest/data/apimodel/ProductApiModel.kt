@@ -5,7 +5,8 @@ import com.squareup.moshi.Json
 /**
  * Created by Kadir Mert Özcan on 29-Mar-21.
  *
- * Data layer model for the items field of the API response from "/searchresult"
+ * Data layer model for the items field of the API response from
+ * "/searchresult", "/latest", "/lowest" and "/highest"
  * Only required fields are listed currently
  */
 data class ProductApiModel (

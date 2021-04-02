@@ -27,7 +27,7 @@ class ColorVariantDomainToUiMapper @Inject constructor()
             }
 
     /** Maps each member of a list of [ColorVariant] objects
-     * into a list of [ColorVariantUiModel] objects using [ColorVariantUiModel.map]*/
+     * into a list of [ColorVariantUiModel] objects using [ColorVariantDomainToUiMapper.map]*/
     override fun transform(inList: List<ColorVariant>): List<ColorVariantUiModel> =
             inList.map { map(it) }
 
@@ -36,7 +36,7 @@ class ColorVariantDomainToUiMapper @Inject constructor()
      * and adding the available size list */
     fun transformWithColorVariantForProductDetail (inList: List<ColorVariant>,
                                                    imgUrls: List<String>,
-                                                   colorSizeMap: HashMap<String, List<Size>>) :
+                                                   colorSizeMap: Map<String, List<Size?>>) :
             List<ColorVariantUiModel> =
             inList.map { domainColorVariantObject ->
                 map(domainColorVariantObject).apply {
@@ -48,7 +48,7 @@ class ColorVariantDomainToUiMapper @Inject constructor()
                     // Add available size (only adds labels with the current implementation)
                     colorSizeMap[name]?.let { sizeList ->
                         for (size in sizeList) {
-                            availableSizeList.add(size.name)
+                            availableSizeList.add(size?.name)
                         }
                     }
                 }

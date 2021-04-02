@@ -7,5 +7,5 @@ data class ColorVariantUiModel(
         val name: String,
         val rgb: String,
         val imgUrlList: MutableList<String>,
-        val availableSizeList: MutableList<String>
+        val availableSizeList: MutableList<String?>
 )

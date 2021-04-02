@@ -5,7 +5,6 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.domain.model
  */
 data class ColorVariant(
         val colorCode: String,
-        val code10: String,
         val name: String,
         val rgb: String
 ) {

@@ -27,7 +27,7 @@ class ProductDetailDomainToUiMapper @Inject constructor(
     }
 
     /** Maps each member of a list of [ProductDetail] objects
-     * into a list of [ProductDetailUiModel] objects using [ProductDetailUiModel.map]*/
+     * into a list of [ProductDetailUiModel] objects using [ProductDetailDomainToUiMapper.map]*/
     override fun transform(inList: List<ProductDetail>): List<ProductDetailUiModel> =
             inList.map { map(it) }
 }
