@@ -1,6 +1,7 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.data.api
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductApiModel
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductDetailResponse
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.SearchResultResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
@@ -42,4 +43,11 @@ interface YamlApi  {
     )
     @GET("highest")
     fun getHighPriceProducts(): Single<SearchResultResponse>
+
+    /** Request method for the "/item" */
+    @Headers(
+            "Accept: application/vnd.github.v3+json"
+    )
+    @GET("item")
+    fun getProductDetail(): Single<ProductDetailResponse>
 }

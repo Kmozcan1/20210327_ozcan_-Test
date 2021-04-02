@@ -3,9 +3,11 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.data.repository
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.SearchResultResponse
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDataToDomainMapper
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDetailDataToDomainMapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType.*
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
+import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ProductDetail
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
@@ -17,11 +19,12 @@ import javax.inject.Inject
  */
 class ProductRepositoryImpl @Inject constructor(
     private val yamlApi: YamlApi,
-    private val productDataToDomainMapper: ProductDataToDomainMapper): ProductRepository {
+    private val productDataToDomainMapper: ProductDataToDomainMapper,
+    private val productDetailDataToDomainMapper: ProductDetailDataToDomainMapper): ProductRepository {
 
-    /** Calls the API based on the sorting mode
-     * Since deciding which API call to make is a data layer logic, it is handled here */
+    /** Calls the API based on the sorting mode */
     override fun getProductList(productSortType: ProductSortType): Single<List<Product>> {
+        // Since deciding which API call to make is a data layer logic, it is handled here
         return when(productSortType) {
             DEFAULT -> {
                 yamlApi.getProducts().map { response ->
@@ -43,6 +46,13 @@ class ProductRepositoryImpl @Inject constructor(
                     mapProductListResult(response)
                 }
             }
+        }
+    }
+
+    /** Makes the /item api call, and returns the mapped response */
+    override fun getProductDetail(): Single<ProductDetail> {
+        return yamlApi.getProductDetail().map { response ->
+            productDetailDataToDomainMapper.map(response)
         }
     }
 
