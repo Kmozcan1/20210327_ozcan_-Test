@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/CircularButtonStyle"
+            app:shapeAppearanceOverlay="@style/CircularShapeStyle"
             app:srcCompat="@drawable/default_image_view_pager_dot"
             app:strokeColor="#000000"
             app:strokeWidth="2dp" />
@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="@+id/selectedColorIndicatorImageView"
             app:layout_constraintStart_toStartOf="@+id/selectedColorIndicatorImageView"
             app:layout_constraintTop_toTopOf="@+id/selectedColorIndicatorImageView"
-            app:shapeAppearanceOverlay="@style/CircularButtonStyle"
+            app:shapeAppearanceOverlay="@style/CircularShapeStyle"
             app:strokeColor="@android:color/transparent"
             app:strokeWidth="0dp" />
 

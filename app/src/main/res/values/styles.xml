@@ -45,8 +45,8 @@
         <item name="android:background">@android:color/white</item>
     </style>
 
-    <!-- Circular Button style-->
-    <style name="CircularButtonStyle" parent="">
+    <!-- Circular Shape style-->
+    <style name="CircularShapeStyle" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
