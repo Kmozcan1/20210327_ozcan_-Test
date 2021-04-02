@@ -10,6 +10,7 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductDetailFragmentBinding
+import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ColorButtonListAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ProductImagePagerAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.SizeButtonListAdapter
@@ -33,7 +34,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
 
     override val viewModelClass: Class<ProductDetailViewModel> = ProductDetailViewModel::class.java
 
-    private lateinit var productImageViewPager: ViewPager2
+    private var productDetailsFetched: Boolean = false
 
     // RecyclerView Adapter for product images
     private val productImagePagerAdapter: ProductImagePagerAdapter by lazy {
@@ -72,6 +73,7 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
 
 
     override fun onViewBound() {
+        setSupportActionBar(hasNavigationButton = true)
         setProductImageViewPager()
         setSizeButtonList()
         setColorButtonList()
@@ -103,16 +105,20 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
         when (viewState.state) {
             ERROR -> makeToast(viewState.errorMessage)
             INITIAL -> {
-                handleLoadingState(isLoading = true)
-                if (getIsConnectedToInternet()) {
+                if (!getIsConnectedToInternet()) {
+                    binding.productDetailConnectivityWarningTextView.visibility = View.VISIBLE
+                    handleLoadingState(isLoading = false)
+                } else {
+                    handleLoadingState(isLoading = true)
                     viewModel.getProductDetail()
                 }
+
             }
             LOADING -> {
                 handleLoadingState(isLoading = true)
             }
             PRODUCT_DETAIL_RESULT -> {
-                //handleLoadingState(isLoading = false)
+                productDetailsFetched = true
                 viewState.productDetail?.let { productDetailResult ->
                     setViews(productDetailResult)
                 }
@@ -173,7 +179,31 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
             binding.productDetailContainer.visibility = View.INVISIBLE
         } else {
             binding.productDetailProgressBar.visibility = View.GONE
-            binding.productDetailContainer.visibility = View.VISIBLE
+            if (getIsConnectedToInternet()) {
+                binding.productDetailContainer.visibility = View.VISIBLE
+
+            }
         }
+    }
+
+    /** Invoked when the internet is disconnected */
+    override fun onInternetDisconnected() {
+        handleLoadingState(false)
+        // Show connection warning only if the product details haven't been loaded yet
+        if (!productDetailsFetched) {
+            binding.productDetailConnectivityWarningTextView.visibility = View.VISIBLE
+        }
+        super.onInternetDisconnected()
+    }
+
+    /** Invoked when the internet is connected */
+    override fun onInternetConnected() {
+        if (previouslyDisconnected) {
+            binding.productDetailConnectivityWarningTextView.visibility = View.GONE
+        }
+        if (previouslyDisconnected && !productDetailsFetched) {
+            viewModel.getProductDetail()
+        }
+        super.onInternetConnected()
     }
 }

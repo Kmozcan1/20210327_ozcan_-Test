@@ -90,16 +90,17 @@ abstract class BaseFragment<DataBindingClass : ViewDataBinding, ViewModelClass :
     }
 
 
-    internal fun setSupportActionBar(isVisible: Boolean, title: String? = null) {
+    internal fun setSupportActionBar(hasNavigationButton: Boolean) {
+        // To center the action bar logo (will probably break if more buttons are added)
         mainActivity.actionBar.run {
-            if (title != null) {
-                this.title = title
-            }
-            visibility = if (isVisible) {
-                View.VISIBLE
+            if (hasNavigationButton) {
+                setContentInsetsRelative(0,
+                        contentInsetStartWithNavigation)
             } else {
-                View.GONE
+                setContentInsetsRelative(0,
+                        mainActivity.initialAppbarContentInsetEnd)
             }
+
         }
     }
 

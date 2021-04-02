@@ -1,21 +1,13 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
@@ -49,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         AppBarConfiguration(navController.graph)
     }
 
+    var initialAppbarContentInsetEnd: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_YooxTest)
         super.onCreate(savedInstanceState)
@@ -57,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set app bar
         actionBar.setupWithNavController(navController, appBarConfiguration)
+        initialAppbarContentInsetEnd = actionBar.contentInsetEnd
         //actionBar.setLogo(R.drawable.ic_yoox_logo)
         viewModel.viewState.observe(this, observeViewState())
         viewModel.observeInternetConnection()
@@ -87,9 +82,9 @@ class MainActivity : AppCompatActivity() {
     // Can be used by BaseFragment class and its children
     fun makeToast(toastMessage: String?) {
         Toast.makeText(
-            this,
-            toastMessage,
-            Toast.LENGTH_LONG
+                this,
+                toastMessage,
+                Toast.LENGTH_LONG
         ).show()
     }
 

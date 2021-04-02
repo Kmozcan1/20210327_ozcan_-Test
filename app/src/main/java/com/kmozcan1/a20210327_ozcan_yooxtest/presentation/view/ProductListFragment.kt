@@ -43,6 +43,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     override fun onViewBound() {
+        setSupportActionBar(hasNavigationButton = false)
         // Used for calling button click methods from xml
         binding.productListFragment = this
 
@@ -163,9 +164,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     /** Invoked when the internet is disconnected */
     override fun onInternetDisconnected() {
         binding.productListProgressBar.visibility = View.GONE
-        // Show empty warning only if the list hasn't been loaded yet
+        // Show connection warning only if the list hasn't been loaded yet
         if (productListAdapter.productList.isEmpty()) {
-            binding.connectivityWarningTextView.visibility = View.VISIBLE
+            binding.productListConnectivityWarningTextView.visibility = View.VISIBLE
         }
         super.onInternetDisconnected()
     }
@@ -173,7 +174,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     /** Invoked when the internet is connected */
     override fun onInternetConnected() {
         if (previouslyDisconnected) {
-            binding.connectivityWarningTextView.visibility = View.GONE
+            binding.productListConnectivityWarningTextView.visibility = View.GONE
         }
         if (previouslyDisconnected && productListAdapter.productList.isEmpty()) {
             viewModel.getProducts(DEFAULT)

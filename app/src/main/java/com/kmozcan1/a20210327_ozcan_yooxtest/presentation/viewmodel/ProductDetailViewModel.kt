@@ -33,7 +33,7 @@ class ProductDetailViewModel @Inject constructor(
     }
 
     override fun onError(t: Throwable) {
-        TODO("Not yet implemented")
+        setViewState(ProductDetailViewState.error(t))
     }
 
 }
