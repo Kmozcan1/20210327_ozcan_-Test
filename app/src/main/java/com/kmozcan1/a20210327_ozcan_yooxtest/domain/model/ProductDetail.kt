@@ -39,7 +39,7 @@ data class ProductDetail (
                 // First line will be followed by an empty line
                 val firstLine = productInfoList[0]
                 val remainingLines = productInfoList.subList(1,
-                        productInfoList.size).joinToString { "\n" }
+                        productInfoList.size).joinToString(separator = "\n")
                 return StringBuilder()
                         .append(firstLine)
                         .append("\n\n")

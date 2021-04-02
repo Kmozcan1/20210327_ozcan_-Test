@@ -18,12 +18,7 @@
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductDetailFragment"
-        android:label="{productName}"
         tools:layout="@layout/product_detail_fragment" >
-        <argument
-            android:name="productName"
-            app:argType="string"
-            android:defaultValue=""/>
     </fragment>
 
     <fragment

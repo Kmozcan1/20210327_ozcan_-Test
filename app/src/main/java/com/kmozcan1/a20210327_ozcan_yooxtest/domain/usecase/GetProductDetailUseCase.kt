@@ -16,7 +16,7 @@ import javax.inject.Inject
 class GetProductDetailUseCase @Inject constructor(
         private val productRepository: ProductRepository
 ): SingleUseCase<ProductDetail, GetProductDetailUseCase.Params>() {
-    data class Params(val productSortType: ProductSortType)
+    data class Params(val void: Void? = null)
 
     override fun buildObservable(params: Params?): Single<ProductDetail> {
         return productRepository

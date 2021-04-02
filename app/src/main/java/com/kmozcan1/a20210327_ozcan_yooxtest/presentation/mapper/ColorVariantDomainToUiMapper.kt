@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ColorVariantDomainToUiMapper @Inject constructor()
     : Mapper<ColorVariant, ColorVariantUiModel> {
     companion object {
-        const val COLOR_CODE_PLACEHOLDER = "COLOR"
+        const val COLOR_CODE_PLACEHOLDER = "-COLOR-"
     }
 
     /** Maps [ColorVariant] object into [ColorVariantUiModel] object*/
@@ -46,7 +46,7 @@ class ColorVariantDomainToUiMapper @Inject constructor()
                                 .replace(COLOR_CODE_PLACEHOLDER, domainColorVariantObject.colorCode))
                     }
                     // Add available size (only adds labels with the current implementation)
-                    colorSizeMap[name]?.let { sizeList ->
+                    colorSizeMap[colorCode]?.let { sizeList ->
                         for (size in sizeList) {
                             availableSizeList.add(size?.name)
                         }

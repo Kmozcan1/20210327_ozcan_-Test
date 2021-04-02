@@ -2,6 +2,7 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.application.di
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDataToDomainMapper
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDetailDataToDomainMapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.repository.ProductRepositoryImpl
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
 import dagger.Module
@@ -20,6 +21,8 @@ object RepositoryModel {
     @Provides
     fun provideProductRepository(
         yamlApi: YamlApi,
-        productDataToDomainMapper: ProductDataToDomainMapper
-    ): ProductRepository = ProductRepositoryImpl(yamlApi, productDataToDomainMapper)
+        productDataToDomainMapper: ProductDataToDomainMapper,
+        productDetailDataToDomainMapper: ProductDetailDataToDomainMapper
+    ): ProductRepository = ProductRepositoryImpl(yamlApi,
+            productDataToDomainMapper, productDetailDataToDomainMapper)
 }

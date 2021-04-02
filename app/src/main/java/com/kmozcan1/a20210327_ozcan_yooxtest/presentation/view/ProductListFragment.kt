@@ -51,10 +51,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     private fun setProductList() {
-        binding.run {
-            productListRecyclerView
+        binding.productListRecyclerView
                 .setRecyclerView(GridLayoutManager(context, 2), productListAdapter)
-        }
+
     }
 
     override fun observeLiveData() {
@@ -150,7 +149,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     /** Called when an item from product list is clicked */
     private fun onProductListItemClick(productBrand: String) {
         val navAction = ProductListFragmentDirections
-            .actionProductListFragmentToProductDetailFragment(productBrand)
+            .actionProductListFragmentToProductDetailFragment()
         navController.navigate(navAction)
     }
 

@@ -92,4 +92,7 @@ dependencies {
     // Moshi
     implementation 'com.squareup.moshi:moshi:1.11.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.11.0'
+
+    // FlexboxLayout
+    implementation 'com.google.android:flexbox:2.0.1'
 }

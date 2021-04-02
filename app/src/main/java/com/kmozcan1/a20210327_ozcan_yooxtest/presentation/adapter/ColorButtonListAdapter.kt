@@ -44,14 +44,14 @@ class ColorButtonListAdapter(
         return colorList.size
     }
 
-    // Adds the list of colors the RecyclerView
+    /** Adds the list of colors the RecyclerView */
     fun addColorList(colorCodeListItems: List<ColorVariantUiModel>) {
         val startPosition = itemCount
         colorList.addAll(colorCodeListItems)
         notifyItemRangeInserted(startPosition, colorCodeListItems.size)
     }
 
-    // Clears the RecyclerView data
+    /** Clears the RecyclerView data */
     fun clearColorList() {
         val size = colorList.size
         colorList.clear()
@@ -95,7 +95,7 @@ class ColorButtonListAdapter(
 
                     selectedButtonPosition = position
 
-                    callbackListener.onColorButtonClick(color.colorCode)
+                    callbackListener.onColorButtonClick(color)
                 }
 
                 // Manually click the first button on setup
@@ -109,6 +109,6 @@ class ColorButtonListAdapter(
 
     /** Listener interface to make callbacks to the view that uses ColorButtonView */
     interface CallbackListener {
-        fun onColorButtonClick(colorCode: String)
+        fun onColorButtonClick(colorVariant: ColorVariantUiModel)
     }
 }
