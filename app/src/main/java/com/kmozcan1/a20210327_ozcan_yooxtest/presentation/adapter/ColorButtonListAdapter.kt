@@ -2,10 +2,10 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ColorButtonListItemBinding
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ColorVariantUiModel
@@ -71,17 +71,23 @@ class ColorButtonListAdapter(
 
                 binding.colorButton.setOnClickListener {
                     if (selectedButtonPosition != position) {
-                        // remove stroke from the unselected button
+                        // remove indicator from the unselected button
                         val view = recyclerView
                                 .findViewHolderForAdapterPosition(selectedButtonPosition)?.itemView
-                        val button = view?.findViewById<MaterialButton>(R.id.colorButton)
+                        val indicatorImage =
+                                view?.findViewById<ShapeableImageView>(
+                                        R.id.selectedColorIndicatorImageView)
+                        indicatorImage?.visibility = View.INVISIBLE
+                        // add indicator to the selected button
+                        binding.selectedColorIndicatorImageView.visibility = View.VISIBLE
+
+                        /*val button = view?.findViewById<MaterialButton>(R.id.colorButton)
                         button?.strokeColor =
                                 ContextCompat.getColorStateList(
                                         context,
                                         android.R.color.transparent
                                 )
 
-                        // add black stroke to the selected button (or white if the color is black)
                         if (rgb == String.format("%06x",
                                         ContextCompat.getColor(context, R.color.black)
                                                 and 0xffffff)) {
@@ -90,7 +96,10 @@ class ColorButtonListAdapter(
                         } else {
                             binding.colorButton.strokeColor =
                                     ContextCompat.getColorStateList(context, R.color.black)
-                        }
+                        }*/
+
+
+
                     }
 
                     selectedButtonPosition = position
