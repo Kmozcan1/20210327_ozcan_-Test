@@ -20,7 +20,7 @@ class ColorSizeQuantityDataToDomainMapper @Inject constructor() :
     }
 
     /** Maps each member of a list of [ColorSizeQuantityApiModel] objects
-     * into a list of [ColorSizeQuantity] objects using [ColorSizeQuantityApiModel.map] */
+     * into a list of [ColorSizeQuantity] objects using [ColorSizeQuantityDataToDomainMapper.map] */
     override fun transform(inList: List<ColorSizeQuantityApiModel>): List<ColorSizeQuantity> =
             inList.map { map(it) }
 }

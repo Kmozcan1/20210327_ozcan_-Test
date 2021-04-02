@@ -19,7 +19,7 @@ data class BrowsingHistoryEntity(
     @ColumnInfo(name = IMAGE)
     var image: Base64,
     @ColumnInfo(name = VISIT_DATETIME)
-    var visitDate: Date
+    var visitDateTime: Date
 ){
     companion object{
         const val TABLE_NAME = "browsing_history"

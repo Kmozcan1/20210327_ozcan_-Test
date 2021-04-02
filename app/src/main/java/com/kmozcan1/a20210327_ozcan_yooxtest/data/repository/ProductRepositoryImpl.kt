@@ -20,7 +20,7 @@ import javax.inject.Inject
 class ProductRepositoryImpl @Inject constructor(
     private val yamlApi: YamlApi,
     private val productDataToDomainMapper: ProductDataToDomainMapper,
-    private val productDetailDataToDomainMapper: ProductDetailDataToDomainMapper): ProductRepository {
+    private val productDetailDataToDomainMapper: ProductDetailDataToDomainMapper) : ProductRepository {
 
     /** Calls the API based on the sorting mode */
     override fun getProductList(productSortType: ProductSortType): Single<List<Product>> {

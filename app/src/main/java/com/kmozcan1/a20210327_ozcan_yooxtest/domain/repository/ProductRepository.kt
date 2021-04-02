@@ -7,6 +7,8 @@ import io.reactivex.rxjava3.core.Single
 
 /**
  * Created by Kadir Mert Özcan on 29-Mar-21.
+ *
+ * Interface for the repository encapsulates the logic required to make related api calls
  */
 interface ProductRepository {
     fun getProductList(productSortType: ProductSortType): Single<List<Product>>
