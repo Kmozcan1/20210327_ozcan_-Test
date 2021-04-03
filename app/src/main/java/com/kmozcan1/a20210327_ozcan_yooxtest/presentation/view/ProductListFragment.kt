@@ -156,7 +156,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     private fun updateSortButtonText(productSortType: ProductSortType) {
         binding.sortProductsButton.text = when (productSortType) {
             DEFAULT ->
-                getString(R.string.sort_default)
+                getString(R.string.sort_products)
             LATEST_ARRIVALS ->
                 getString(R.string.sort_latest_arrivals)
             LOW_PRICE ->
@@ -182,6 +182,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
 
     /** Called when the historyButton is clicked, navigates to BrowsingHistoryFragment */
     fun onHistoryButtonClick(v: View) {
+        // So that fragment knows that it already has a list after coming back
+        viewModel.setHasRetainedListState(true)
+
         val navAction = ProductListFragmentDirections
             .actionProductListFragmentToBrowsingHistoryFragment()
         navController.navigate(navAction)
