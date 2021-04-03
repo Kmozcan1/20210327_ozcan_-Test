@@ -12,7 +12,7 @@ The innermost layer of the app, domain layer contains interactors (use cases), d
 
 ### Data Layer
 
-This is the outer layer that makes it possible for the application to access external data (i.e. reading/writing room database data and make rest api calls). Data layer contains repository implementations, retrofit rest api endpoint interfaces, data <-> domain mapper implementations, room database object & daos and data layer related models.
+This is the outer layer that makes it possible for the application to access external data (i.e. reading/writing room database data and making rest api calls). Data layer contains repository implementations, retrofit rest api endpoint interfaces, data <-> domain mapper implementations, room database object & DAOs and data layer related models.
 
 ### Presentation Layer
 
@@ -24,15 +24,15 @@ This section will list the key components of the application (as well as some im
 
 ### Single-Activity Architecture
 
-Although some complain about the overly complicated Fragment lifecycles, Google encouraged us to build single activity applications back in 2018. In my opinion, Android Jetpack's Navigation component makes it worth using this architecture. To implement the single-activity architecture, the app has only one activity called MainActivity, which contains a toolbar and a FragmentContainerView. FragmentContainerView is responsible for inflating the fragments and handling the navigation logic using the navigation graph. Using this architectire makes it easier for application's screen's to access components and variables that are common to all of them, such as internet connectivity state and the toolbar.
+Although some complain about the overly complicated Fragment lifecycles, Google encouraged us to build single activity applications back in 2018. In my opinion, Android Jetpack's Navigation component makes it worth using this architecture. The only activity the app has is MainActivity, which contains a toolbar and a FragmentContainerView. FragmentContainerView is responsible for inflating the fragments and handling the navigation logic using the navigation graph. Using this architecture makes it easier for the fragments to access activity methods and variables that are common to all of them, such as checking internet connectivity state and the manipulating the toolbar.
 
 ### Data Binding
 
-Data binding is mainly used for assingning buttonClick methods to components and providing better readibility (like accessing a view component with binding.componentName). Although it is possible to declare a variable in the .xml file and assign ViewStates or other values to them, I find that this practive usually causes negative impact for readibility and organization of the projects.
+Data binding is mainly used for assigning buttonClick methods to components and providing better readibility (like accessing a view component with binding.componentName). Although it is possible to declare a variable in the .xml file and assign ViewStates or other values to them, I find that this practive usually causes negative impact for code readibility and organization.
 
 ### ViewModels and ViewStates
 
-ViewModel classes handle the presentation layer's communication with the data layer and help views to stay "dumb". They are injected to the view classes thanks to Dagger Hilt's HiltViewModel annotation. All ViewModel classes implement the abstract BaseViewModel class, which declares a viewState LiveData object based on the type paremeter given to it. This object is observed from the views to act based on the current state of the screen. ViewState classes themselves are data classes, and each of them has an Enum class named State for organization purposes.
+ViewModel classes handle the presentation layer's communication with the data layer and cause views to stay "dumb". They are injected to the view classes thanks to Dagger Hilt's HiltViewModel annotation. All ViewModel classes implement the abstract BaseViewModel class, which declares a viewState LiveData object based on the type paremeter given to it. This object is observed from the views to act based on the current state of the screen. ViewState classes themselves are data classes, and each of them has an Enum class named State for organization purposes.
 
 ### BaseFragment
 
