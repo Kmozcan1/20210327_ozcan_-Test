@@ -28,13 +28,8 @@ class ProductListFragmentTest {
     val activityScenario = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun test_isListVisible_onAppLaunch() {
-        onView(withId(R.id.productListRecyclerView)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun test_selectedListItem_isVisible() {
-        onView(withId(R.id.productListRecyclerView))
-            .perform(actionOnItemAtPosition<ProductListItemViewHolder>(1, click()))
+    fun test_clickSortTypeButtonBeforeProducts() {
+        onView(withId(R.id.sortProductsButton))
+            .perform(click())
     }
 }
