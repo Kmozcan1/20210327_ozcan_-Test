@@ -1,5 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,5 +49,10 @@ class ProductSortBottomSheetFragment : BottomSheetDialogFragment() {
         // To fully extend the dialog on landscape orientation
         val behavior = BottomSheetBehavior.from(requireView().parent as View)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        binding.productListFragment?.sortDisabled = false
     }
 }

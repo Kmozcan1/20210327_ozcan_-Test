@@ -26,7 +26,7 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     }
 
     // To prevent clicks to sort buttons while repositories are still loading
-    private var sortDisabled = true
+    var sortDisabled = true
 
     override val layoutId: Int = R.layout.product_list_fragment
 
@@ -123,6 +123,8 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
     /** Called when the sortProductsButton is used, referenced in the fragment's xml file*/
     fun onSortButtonClick(v: View) {
         if (!sortDisabled) {
+            // disable sort button to prevent double click
+            sortDisabled = true
             productSortBottomSheetFragment.arguments = Bundle().apply {
                 productSortBottomSheetFragment.show(childFragmentManager, tag)
             }
@@ -133,6 +135,9 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
      * Calls the ViewModel method the observe the list of products based on the sort type
      * Also changes the sort button text*/
     fun onBottomSheetButtonClick(productSortType: ProductSortType) {
+        // enable sort button
+        sortDisabled = false
+
         // close the bottom sheet fragment
         productSortBottomSheetFragment.dismiss()
 
@@ -202,6 +207,11 @@ class ProductListFragment : BaseFragment<ProductListFragmentBinding, ProductList
             viewModel.getProducts(DEFAULT)
         }
         super.onInternetConnected()
+    }
+
+    override fun onResume() {
+        sortDisabled = false
+        super.onResume()
     }
 
     override fun onDestroyView() {
