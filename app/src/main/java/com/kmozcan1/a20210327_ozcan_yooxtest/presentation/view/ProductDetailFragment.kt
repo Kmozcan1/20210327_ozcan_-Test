@@ -2,7 +2,9 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -10,6 +12,7 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductDetailFragmentBinding
+import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ColorButtonListAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ProductImagePagerAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.SizeButtonListAdapter
@@ -21,6 +24,9 @@ import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel.ProductDetai
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductDetailViewState
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductDetailViewState.State.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import java.util.*
 
 
@@ -158,9 +164,14 @@ class ProductDetailFragment : BaseFragment<ProductDetailFragmentBinding, Product
         colorButtonListAdapter.apply {
             addColorList(productDetailResult.colorVariantList)
         }
-        // refresh size buttons for the first color
-        sizeButtonListAdapter
+
+        viewLifecycleOwner.lifecycleScope.launch{
+            // Slight delay to prevent race betweent adapters
+            delay(50)
+            // refresh size buttons for the first color
+            sizeButtonListAdapter
                 .refreshButtons(productDetailResult.colorVariantList[0].availableSizeList)
+        }
     }
 
     /** Returns color button callback listener object */
