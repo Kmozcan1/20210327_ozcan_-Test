@@ -23,7 +23,6 @@ fun RecyclerView.setRecyclerView(
 }
 
 // Extension function for binding adapter that loads image url with glide
-@BindingAdapter("imageUrl")
 fun ImageView.setImageUrl(url: String?) {
     // Progress animation to show while the image is loading
     val circularProgressDrawable = CircularProgressDrawable(this.context)

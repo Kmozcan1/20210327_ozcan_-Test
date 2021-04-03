@@ -1,7 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ColorApiModel
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductApiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.mapper.Mapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ColorVariant
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product

@@ -1,14 +1,12 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.application.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.YooxDatabase
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.dao.BrowsingHistoryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

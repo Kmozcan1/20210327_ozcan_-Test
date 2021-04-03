@@ -1,12 +1,9 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.manager.InternetManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.base.ObservableUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.base.SingleUseCase
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

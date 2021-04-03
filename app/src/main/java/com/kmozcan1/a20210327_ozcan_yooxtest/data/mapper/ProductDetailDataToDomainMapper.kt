@@ -1,14 +1,10 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper
 
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ColorApiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ColorSizeQuantityApiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductApiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.ProductDetailResponse
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.mapper.Mapper
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ColorVariant
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ProductDetail
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Size
 import javax.inject.Inject
 
 /**

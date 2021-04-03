@@ -1,6 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.application.di
 
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YooxApi
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.dao.BrowsingHistoryDao
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.BrowsingHistoryDataToDomainMapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.BrowsingHistoryDomainToDataMapper
@@ -25,10 +25,10 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModel {
     @Provides
     fun provideProductRepository(
-        yamlApi: YamlApi,
+        yooxApi: YooxApi,
         productDataToDomainMapper: ProductDataToDomainMapper,
         productDetailDataToDomainMapper: ProductDetailDataToDomainMapper
-    ): ProductRepository = ProductRepositoryImpl(yamlApi,
+    ): ProductRepository = ProductRepositoryImpl(yooxApi,
             productDataToDomainMapper, productDetailDataToDomainMapper)
 
     @Provides

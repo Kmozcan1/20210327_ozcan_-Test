@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.BrowsingHistoryListItemBinding
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.BrowsingHistoryUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setImageUrl
-import java.util.*
 
 /**
  * Created by Kadir Mert Özcan on 02-Apr-21.

@@ -1,6 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.data.repository
 
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YooxApi
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.apimodel.SearchResultResponse
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDataToDomainMapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.mapper.ProductDetailDataToDomainMapper
@@ -18,7 +18,7 @@ import javax.inject.Inject
  * [ProductRepository] implementation
  */
 class ProductRepositoryImpl @Inject constructor(
-    private val yamlApi: YamlApi,
+    private val yooxApi: YooxApi,
     private val productDataToDomainMapper: ProductDataToDomainMapper,
     private val productDetailDataToDomainMapper: ProductDetailDataToDomainMapper) : ProductRepository {
 
@@ -27,22 +27,22 @@ class ProductRepositoryImpl @Inject constructor(
         // Since deciding which API call to make is a data layer logic, it is handled here
         return when(productSortType) {
             DEFAULT -> {
-                yamlApi.getProducts().map { response ->
+                yooxApi.getProducts().map { response ->
                     mapProductListResult(response)
                 }
             }
             LATEST_ARRIVALS -> {
-                yamlApi.getLatestProducts().map { response ->
+                yooxApi.getLatestProducts().map { response ->
                     mapProductListResult(response)
                 }
             }
             LOW_PRICE -> {
-                yamlApi.getLowPriceProducts().map { response ->
+                yooxApi.getLowPriceProducts().map { response ->
                     mapProductListResult(response)
                 }
             }
             HIGH_PRICE -> {
-                yamlApi.getHighPriceProducts().map { response ->
+                yooxApi.getHighPriceProducts().map { response ->
                     mapProductListResult(response)
                 }
             }
@@ -51,7 +51,7 @@ class ProductRepositoryImpl @Inject constructor(
 
     /** Makes the /item api call, and returns the mapped response */
     override fun getProductDetail(): Single<ProductDetail> {
-        return yamlApi.getProductDetail().map { response ->
+        return yooxApi.getProductDetail().map { response ->
             productDetailDataToDomainMapper.map(response)
         }
     }

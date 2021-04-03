@@ -1,6 +1,5 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel
 
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.GetProductDetailUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.UpdateBrowsingHistoryUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.mapper.BrowsingHistoryUiToDomainMapper

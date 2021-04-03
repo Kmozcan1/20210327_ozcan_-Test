@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductListFragmentBinding
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType

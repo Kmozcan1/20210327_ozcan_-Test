@@ -2,7 +2,6 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity.BrowsingHistoryEntity.Companion.BRAND
 import com.kmozcan1.a20210327_ozcan_yooxtest.data.db.entity.BrowsingHistoryEntity.Companion.CODE10
 import java.util.*
 

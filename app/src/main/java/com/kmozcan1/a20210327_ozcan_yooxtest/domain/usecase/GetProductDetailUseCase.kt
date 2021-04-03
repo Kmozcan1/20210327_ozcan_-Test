@@ -1,7 +1,5 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase
 
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ProductDetail
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.base.SingleUseCase

@@ -2,10 +2,8 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.mapper
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.mapper.Mapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ColorVariant
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Product
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.Size
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ColorVariantUiModel
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
 import javax.inject.Inject
 
 /**

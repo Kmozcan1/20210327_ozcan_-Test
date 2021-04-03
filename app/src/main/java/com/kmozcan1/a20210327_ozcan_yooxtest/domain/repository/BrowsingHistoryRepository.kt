@@ -1,7 +1,6 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.BrowsingHistory
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.ProductDetail
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 

@@ -1,6 +1,5 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

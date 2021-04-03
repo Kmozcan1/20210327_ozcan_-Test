@@ -2,7 +2,6 @@ package com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.model.BrowsingHistory
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.BrowsingHistoryRepository
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.repository.ProductRepository
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.base.SingleUseCase
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject

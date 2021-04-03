@@ -1,10 +1,8 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.GetBrowsingHistoryListUseCase
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.GetProductDetailUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.mapper.BrowsingHistoryDomainToUiMapper
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.BrowsingHistoryViewState
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductDetailViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

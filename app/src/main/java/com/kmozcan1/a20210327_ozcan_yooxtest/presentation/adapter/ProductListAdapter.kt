@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductListItemBinding
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setImageUrl
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view.ProductListFragment
 
 /**
  * Created by Kadir Mert Özcan on 28-Mar-21.

@@ -1,7 +1,7 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.application.di
 
 import com.kmozcan1.a20210327_ozcan_yooxtest.BuildConfig
-import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YamlApi
+import com.kmozcan1.a20210327_ozcan_yooxtest.data.api.YooxApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -81,10 +81,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideYamlApi(
+    fun provideYooxApi(
         retrofit: Retrofit
-    ): YamlApi {
-        return retrofit.create(YamlApi::class.java)
+    ): YooxApi {
+        return retrofit.create(YooxApi::class.java)
     }
 
 }

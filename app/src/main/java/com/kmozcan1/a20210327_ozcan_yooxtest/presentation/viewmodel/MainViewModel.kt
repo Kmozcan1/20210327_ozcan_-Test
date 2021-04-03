@@ -1,6 +1,5 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import com.kmozcan1.a20210327_ozcan_yooxtest.domain.usecase.ObserveInternetConnectionUseCase
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.MainViewState
 import dagger.hilt.android.lifecycle.HiltViewModel

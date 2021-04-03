@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductImagePagerViewBinding
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.ProductUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setImageUrl
 
 /**

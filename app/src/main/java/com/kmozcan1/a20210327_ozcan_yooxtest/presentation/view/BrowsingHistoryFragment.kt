@@ -1,27 +1,16 @@
 package com.kmozcan1.a20210327_ozcan_yooxtest.presentation.view
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kmozcan1.a20210327_ozcan_yooxtest.R
 import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.BrowsingHistoryFragmentBinding
-import com.kmozcan1.a20210327_ozcan_yooxtest.databinding.ProductDetailFragmentBinding
-import com.kmozcan1.a20210327_ozcan_yooxtest.domain.enumeration.ProductSortType
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.BrowsingHistoryListAdapter
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.adapter.ProductListAdapter
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.model.BrowsingHistoryUiModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.setRecyclerView
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel.BrowsingHistoryViewModel
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewmodel.ProductDetailViewModel
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.BrowsingHistoryViewState
 import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.BrowsingHistoryViewState.State.*
-import com.kmozcan1.a20210327_ozcan_yooxtest.presentation.viewstate.ProductListViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
