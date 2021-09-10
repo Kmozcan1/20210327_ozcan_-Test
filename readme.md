@@ -1,6 +1,6 @@
-# Yoox Test Application
+# ***** Test Application
 
-This application was developed for YOOX Net-a-Porter Group as a part of their hiring process. 
+This application was developed for ***** as a part of their hiring process. 
 
 ## Structure of the app
 
